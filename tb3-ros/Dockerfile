@@ -1,4 +1,4 @@
-FROM dorowu/ubuntu-desktop-lxde-vnc:bionic
+FROM cosi119/ubuntu-desktop-lxde-vnc:18.04-cuda
 
 # BASE IMAGE CUSTOMIZATIONS -----------------------------------------------------------------------
 
