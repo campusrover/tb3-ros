@@ -1,10 +1,11 @@
-# tb3-ros v2
+# tb3-ros v2 (CUDA)
 
 Standalone docker image for running `tb3-ros`.
 
 ## Specifications
 
 * Ubuntu 18.04
+* CUDA 10.1
 * ROS Melodic
 * lxde window manager
 
