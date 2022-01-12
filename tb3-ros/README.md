@@ -4,8 +4,8 @@ Standalone docker image for running `tb3-ros`.
 
 ## Specifications
 
-* Ubuntu 18.04
-* ROS Melodic
+* Ubuntu 20.04
+* ROS Noetic
 * lxde window manager
 
 Services:
