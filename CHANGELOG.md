@@ -24,3 +24,12 @@ All notable changes to this project will be documented in this file.
 
 - Migrated to new base image `fcwu/docker-ubuntu-vnc-desktop` instead of `coros`.
 - Upgraded `code-server` to v2.
+
+## [3.0.0] - 2022-7-17
+
+### Changed
+
+- Updated to Noetic and Ubuntu 20.04
+- Install now noetic linux signing key so that apt-get update works
+
+

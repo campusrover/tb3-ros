@@ -7,9 +7,12 @@ ENV LC_ALL C.UTF-8
 
 ENV ROS_DISTRO noetic
 
+RUN wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+
 # Install system dependencies
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     nano \
+    micro \
     wget \
     curl \
     tar \
@@ -49,12 +52,12 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     ros-noetic-tf \
     ros-noetic-tf2
 
-# Tailscale VPN support
+ # Tailscale VPN support
 RUN mkdir -p /my_ros_data/tailscale
 RUN curl -vsLo tailscale.tar.gz "https://pkgs.tailscale.com/stable/tailscale_1.2.10_amd64.tgz" && \
     tar xvf tailscale.tar.gz && \
     mv "tailscale_1.2.10_amd64/tailscaled" /usr/bin && \
-    mv "tailscale_1.2.10_amd64/tailscale" /usr/bin
+   mv "tailscale_1.2.10_amd64/tailscale" /usr/bin
 
 RUN chmod +x /usr/bin/tailscale
 RUN chmod +x /usr/bin/tailscaled
@@ -113,6 +116,7 @@ RUN ln -s /my_ros_data/rosutils/bru.py /usr/local/bin/bru && chmod +x bru.py
 
 COPY ./entrypoint.sh /entry/
 RUN chmod +x /entry/entrypoint.sh
+
 # Override entrypoint of base image
 ENTRYPOINT []
 CMD ["bash", "-c", "/entry/entrypoint.sh"]

@@ -14,6 +14,19 @@ This is a docker image to allow you to run ROS and related applications through 
 * Gen5: Assignments for this generation of Cosi119a
 * Here are some handy commands for later: https://campus-rover.gitbook.io/lab-notebook/ros-tips/handy-commands
 
+
+## Building
+
+The Dockerfile will is `built` into a Docker image with this command:
+
+`make build`
+
+Which will create a docker image called `cosi119/tb3-ros:dev`, that is, with tag `dev`. Once you have tested it and decided that it is good to go you will push it to hub.docker.com. I like to keep the :dev tag until I know I have a good one.
+
+`make push`
+
+Which will push the docker image to hub.docker.com. Change the tag at this point to reflect the version history. You can add other tags to describe it further if you like
+
 ## Standalone image
 
 **Tested on Windows, Mac, Ubuntu**
