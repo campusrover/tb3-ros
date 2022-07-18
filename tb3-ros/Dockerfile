@@ -107,11 +107,15 @@ RUN git clone https://github.com/campusrover/prrexamples.git
 RUN git clone https://github.com/campusrover/gpg_bran4.git
 
 WORKDIR /my_ros_data
-RUN git clone https://github.com/campusrover/rosutils.git
-WORKDIR /my_ros_data/rosutils
-RUN cat bashrc_template.bash > /my_ros_data/.bashrc
+#RUN git clone https://github.com/campusrover/rosutils.git
+RUN mkdir -p /my_ros_data/it_worked
+#RUN cp /my_ros_data/rosutils/bashrc_template.bash .
+#RUN ls /my_ros_data/rosutils
+#WORKDIR /my_ros_data/rosutils
+#RUN cat bashrc_template.bash > /my_ros_data/.bashrc-copy
 
-RUN ln -s /my_ros_data/rosutils/bru.py /usr/local/bin/bru && chmod +x bru.py
+
+#RUN ln -s /my_ros_data/rosutils/bru.py /usr/local/bin/bru && chmod +x bru.py
 
 
 COPY ./entrypoint.sh /entry/
