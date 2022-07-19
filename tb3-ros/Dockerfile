@@ -25,7 +25,6 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     iputils-ping \
     netcat
 
-
 # ROS melodic support
 RUN echo "deb http://packages.ros.org/ros/ubuntu focal main" > /etc/apt/sources.list.d/ros1-latest.list
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
@@ -62,12 +61,10 @@ RUN curl -vsLo tailscale.tar.gz "https://pkgs.tailscale.com/stable/tailscale_1.2
 RUN chmod +x /usr/bin/tailscale
 RUN chmod +x /usr/bin/tailscaled
 
-
 # Code-server
 RUN mkdir /code-server && \
     curl -fL https://github.com/cdr/code-server/releases/download/v3.6.1/code-server-3.6.1-linux-amd64.tar.gz \
     | tar xvz --strip-components=1 -C /code-server
-
 
 # Workspace and catkin_ws setup
 WORKDIR /my_ros_data/
@@ -107,15 +104,9 @@ RUN git clone https://github.com/campusrover/prrexamples.git
 RUN git clone https://github.com/campusrover/gpg_bran4.git
 
 WORKDIR /my_ros_data
-#RUN git clone https://github.com/campusrover/rosutils.git
+RUN git clone https://github.com/campusrover/rosutils.git
 RUN mkdir -p /my_ros_data/it_worked
-#RUN cp /my_ros_data/rosutils/bashrc_template.bash .
-#RUN ls /my_ros_data/rosutils
-#WORKDIR /my_ros_data/rosutils
-#RUN cat bashrc_template.bash > /my_ros_data/.bashrc-copy
-
-
-#RUN ln -s /my_ros_data/rosutils/bru.py /usr/local/bin/bru && chmod +x bru.py
+RUN ln -s /my_ros_data/rosutils/bru.py /usr/local/bin/bru && chmod +x bru.py
 
 
 COPY ./entrypoint.sh /entry/
