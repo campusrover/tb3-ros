@@ -114,9 +114,7 @@ RUN mkdir -p /my_ros_data/it_worked
 #WORKDIR /my_ros_data/rosutils
 #RUN cat bashrc_template.bash > /my_ros_data/.bashrc-copy
 
-
 #RUN ln -s /my_ros_data/rosutils/bru.py /usr/local/bin/bru && chmod +x bru.py
-
 
 COPY ./entrypoint.sh /entry/
 RUN chmod +x /entry/entrypoint.sh
