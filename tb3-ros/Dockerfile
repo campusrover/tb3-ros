@@ -1,13 +1,13 @@
-FROM pitosalas/ubuntu-desktop-lxde-vnc:focal-
+FROM cosi119/ubuntu-desktop-lxde-vnc-ros:latest
 
-# BASE IMAGE CUSTOMIZATIONS -----------------------------------------------------------------------
+# # BASE IMAGE CUSTOMIZATIONS -----------------------------------------------------------------------
 
-ENV LANG C.UTF-8
-ENV LC_ALL C.UTF-8
+# ENV LANG C.UTF-8
+# ENV LC_ALL C.UTF-8
 
-ENV ROS_DISTRO noetic
+# ENV ROS_DISTRO noetic
 
-RUN wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+# RUN wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 
 # Install system dependencies
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
@@ -25,14 +25,6 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     iputils-ping \
     netcat
 
-# ROS melodic support
-RUN echo "deb http://packages.ros.org/ros/ubuntu focal main" > /etc/apt/sources.list.d/ros1-latest.list
-RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
-RUN curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
-
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
-    ros-noetic-desktop-full
-    
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     build-essential \
     python3-rosdep \
@@ -67,7 +59,7 @@ RUN mkdir /code-server && \
     curl -fL https://github.com/cdr/code-server/releases/download/v3.6.1/code-server-3.6.1-linux-amd64.tar.gz \
     | tar xvz --strip-components=1 -C /code-server
 
-# Workspace and catkin_ws setup
+# # Workspace and catkin_ws setup
 WORKDIR /my_ros_data/
 RUN echo "source /opt/ros/noetic/setup.bash" >> .bashrc && \
     mkdir -p catkin_ws/src/ && \
@@ -107,12 +99,12 @@ RUN git clone https://github.com/campusrover/gpg_bran4.git
 WORKDIR /my_ros_data
 RUN git clone https://github.com/campusrover/rosutils.git
 RUN mkdir -p /my_ros_data/it_worked
-#RUN cp /my_ros_data/rosutils/bashrc_template.bash .
-#RUN ls /my_ros_data/rosutils
-#WORKDIR /my_ros_data/rosutils
-#RUN cat bashrc_template.bash > /my_ros_data/.bashrc-copy
+RUN cp /my_ros_data/rosutils/bashrc_template.bash .
+RUN ls /my_ros_data/rosutils
+WORKDIR /my_ros_data/rosutils
+RUN cat bashrc_template.bash > /my_ros_data/.bashrc-copy
 
-#RUN ln -s /my_ros_data/rosutils/bru.py /usr/local/bin/bru && chmod +x bru.py
+RUN ln -s /my_ros_data/rosutils/bru.py /usr/local/bin/bru && chmod +x bru.py
 
 COPY ./entrypoint.sh /entry/
 RUN chmod +x /entry/entrypoint.sh

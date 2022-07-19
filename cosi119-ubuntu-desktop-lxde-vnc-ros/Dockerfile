@@ -1,6 +1,4 @@
-# This is an auto generated Dockerfile for ros:ros-core
-# generated from docker_images/create_ros_core_image.Dockerfile.em
-#FROM ubuntu:focal
+FROM ubuntu:focal
 FROM dorowu/ubuntu-desktop-lxde-vnc:focal
 
 RUN apt-get install -y wget
