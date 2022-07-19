@@ -1,4 +1,4 @@
-FROM dorowu/ubuntu-desktop-lxde-vnc:focal
+FROM pitosalas/ubuntu-desktop-lxde-vnc:focal-
 
 # BASE IMAGE CUSTOMIZATIONS -----------------------------------------------------------------------
 
@@ -107,8 +107,12 @@ RUN git clone https://github.com/campusrover/gpg_bran4.git
 WORKDIR /my_ros_data
 RUN git clone https://github.com/campusrover/rosutils.git
 RUN mkdir -p /my_ros_data/it_worked
-RUN ln -s /my_ros_data/rosutils/bru.py /usr/local/bin/bru && chmod +x bru.py
+#RUN cp /my_ros_data/rosutils/bashrc_template.bash .
+#RUN ls /my_ros_data/rosutils
+#WORKDIR /my_ros_data/rosutils
+#RUN cat bashrc_template.bash > /my_ros_data/.bashrc-copy
 
+#RUN ln -s /my_ros_data/rosutils/bru.py /usr/local/bin/bru && chmod +x bru.py
 
 COPY ./entrypoint.sh /entry/
 RUN chmod +x /entry/entrypoint.sh
