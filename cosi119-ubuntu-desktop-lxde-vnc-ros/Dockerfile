@@ -1,4 +1,4 @@
-FROM ubuntu:focal
+# Create our base with just ROS added to dorowu/ubuntu-desktop-lxde-vnc:focal
 FROM dorowu/ubuntu-desktop-lxde-vnc:focal
 
 RUN apt-get install -y wget
