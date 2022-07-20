@@ -35,7 +35,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     ros-noetic-tf \
     ros-noetic-tf2
 
- # Tailscale VPN support
+# Tailscale VPN support
 RUN mkdir -p /my_ros_data/tailscale
 RUN curl -vsLo tailscale.tar.gz "https://pkgs.tailscale.com/stable/tailscale_1.2.10_amd64.tgz" && \
     tar xvf tailscale.tar.gz && \
@@ -44,6 +44,13 @@ RUN curl -vsLo tailscale.tar.gz "https://pkgs.tailscale.com/stable/tailscale_1.2
 
 RUN chmod +x /usr/bin/tailscale
 RUN chmod +x /usr/bin/tailscaled
+
+# Pip2 and supervisor 3.4.0
+RUN curl https://bootstrap.pypa.io/pip/2.7/get-pip.py -o get-pip.py
+RUN python2 get-pip.py
+RUN rm get-pip.py
+RUN apt-get remove -y supervisor
+RUN pip install 'supervisor==3.4.0'
 
 # Code-server
 RUN mkdir /code-server && \
