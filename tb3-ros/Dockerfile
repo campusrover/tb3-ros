@@ -1,14 +1,5 @@
 FROM cosi119/ubuntu-desktop-lxde-vnc-ros:latest
 
-# # BASE IMAGE CUSTOMIZATIONS -----------------------------------------------------------------------
-
-# ENV LANG C.UTF-8
-# ENV LC_ALL C.UTF-8
-
-# ENV ROS_DISTRO noetic
-
-# RUN wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-
 # Install system dependencies
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     nano \
@@ -79,7 +70,6 @@ ENV TB3_MODEL=burger \
     NAME_CATKIN_WORKSPACE=/my_ros_data/catkin_ws
 
 # Copy needed files
-ADD files/rootfs/.bashrc .
 ADD files/rootfs/.jwmrc /entry/
 COPY files/sshd/sshd_config /etc/ssh/
 COPY files/nginx/default /etc/nginx/sites-enabled/
@@ -90,21 +80,17 @@ COPY files/code-server/config.yaml /my_ros_data/.config/code-server/config.yaml
 
 
 WORKDIR /my_ros_data/catkin_ws/src
-RUN git clone https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git
-RUN git clone https://github.com/ROBOTIS-GIT/turtlebot3.git
-RUN git clone https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git
-RUN git clone https://github.com/campusrover/prrexamples.git
-RUN git clone https://github.com/campusrover/gpg_bran4.git
+RUN git clone https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git && \
+    git clone https://github.com/ROBOTIS-GIT/turtlebot3.git && \
+    git clone https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git && \
+    git clone https://github.com/campusrover/prrexamples.git && \
+    git clone https://github.com/campusrover/gpg_bran4.git
 
 WORKDIR /my_ros_data
 RUN git clone https://github.com/campusrover/rosutils.git
-RUN mkdir -p /my_ros_data/it_worked
-RUN cp /my_ros_data/rosutils/bashrc_template.bash .
-RUN ls /my_ros_data/rosutils
-WORKDIR /my_ros_data/rosutils
-RUN cat bashrc_template.bash > /my_ros_data/.bashrc-copy
+RUN cp /my_ros_data/rosutils/bashrc_template.bash /my_ros_data/.bashrc
 
-RUN ln -s /my_ros_data/rosutils/bru.py /usr/local/bin/bru && chmod +x bru.py
+RUN ln -s /my_ros_data/rosutils/bru.py /usr/local/bin/bru && chmod +x /my_ros_data/rosutils/bru.py
 
 COPY ./entrypoint.sh /entry/
 RUN chmod +x /entry/entrypoint.sh
