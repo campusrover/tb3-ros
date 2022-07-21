@@ -37,7 +37,6 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     ros-noetic-dynamixel-sdk \
     ros-noetic-turtlebot3-msgs \
     ros-noetic-turtlebot3-gazebo \
-    ros-noetic-turtlebot3-simulator \
     ros-noetic-turtlebot3-teleop \
     ros-noetic-turtlebot3
 
@@ -93,9 +92,9 @@ COPY files/code-server/config.yaml /my_ros_data/.config/code-server/config.yaml
 
 
 WORKDIR /my_ros_data/catkin_ws/src
-RUN git clone https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git && \
-    git clone https://github.com/ROBOTIS-GIT/turtlebot3.git && \
-    git clone https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git && \
+RUN git clone -b noetic-devel https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git && \
+    git clone -b noetic-devel  https://github.com/ROBOTIS-GIT/turtlebot3.git && \
+    git clone -b noetic-devel  https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git && \
     git clone https://github.com/campusrover/prrexamples.git && \
     git clone https://github.com/campusrover/gpg_bran4.git
 
