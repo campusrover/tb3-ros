@@ -33,7 +33,13 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     ros-noetic-camera-info-manager \
     ros-noetic-diagnostics \
     ros-noetic-tf \
-    ros-noetic-tf2
+    ros-noetic-tf2* \
+    ros-noetic-dynamixel-sdk \
+    ros-noetic-turtlebot3-msgs \
+    ros-noetic-turtlebot3-gazebo \
+    ros-noetic-turtlebot3-simulator \
+    ros-noetic-turtlebot3-teleop \
+    ros-noetic-turtlebot3
 
 # Tailscale VPN support
 RUN mkdir -p /my_ros_data/tailscale
