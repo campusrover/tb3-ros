@@ -33,3 +33,7 @@ All notable changes to this project will be documented in this file.
 - Install now noetic linux signing key so that apt-get update works
 
 
+## TODO
+* Add pip3 install
+
+
