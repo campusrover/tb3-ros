@@ -23,6 +23,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     python3-rosinstall-generator \
     python3-wstool \
     python3-vcstools \
+    python3-pip \
     ros-noetic-rqt \
     ros-noetic-rqt* \
     ros-noetic-rviz \
@@ -59,7 +60,7 @@ RUN pip install 'supervisor==3.4.0'
 
 # Code-server
 RUN mkdir /code-server && \
-    curl -fL https://github.com/cdr/code-server/releases/download/v3.6.1/code-server-3.6.1-linux-amd64.tar.gz \
+    curl -fL https://github.com/cdr/code-server/releases/download/v4.5.1/code-server-4.5.1-linux-amd64.tar.gz \
     | tar xvz --strip-components=1 -C /code-server
 
 # # Workspace and catkin_ws setup
