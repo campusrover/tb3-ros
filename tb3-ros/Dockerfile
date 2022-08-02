@@ -1,4 +1,4 @@
-FROM cosi119/ubuntu-desktop-lxde-vnc-ros:latest
+FROM cosi119/ubuntu-desktop-lxde-vnc-ros:dev-2
 
 # Install system dependencies
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
