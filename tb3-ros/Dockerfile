@@ -39,6 +39,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     ros-noetic-gmapping \
     ros-noetic-global-planner \
     ros-noetic-dws-local-planner \
+    ros-noetic-dwa-local-planner \
     ros-noetic-dynamixel-sdk \
     ros-noetic-turtlebot3-msgs \
     ros-noetic-turtlebot3-gazebo \
