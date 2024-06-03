@@ -23,6 +23,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     python3-rosinstall-generator \
     python3-wstool \
     python3-vcstools \
+    python3-pip \
     ros-noetic-rqt \
     ros-noetic-rqt* \
     ros-noetic-rviz \
