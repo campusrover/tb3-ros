@@ -26,9 +26,9 @@ Sometimes it seems to me that it matters what kind of computer you use for docke
 
 **Stage 1**
 
-$ cd ubuntu-desktop-lxde-vnc-ros
-$ docker build -t cosi119/ubuntu-desktop-lxde-vnc-ros:devel-xxx
-$ docker push cosi119/ubuntu-desktop-lxde-vnc-ros:devel-xxx
+  $ cd ubuntu-desktop-lxde-vnc-ros
+  $ docker build -t cosi119/ubuntu-desktop-lxde-vnc-ros:devel-xxx
+  $ docker push cosi119/ubuntu-desktop-lxde-vnc-ros:devel-xxx
 
 **Stage 2**
 
